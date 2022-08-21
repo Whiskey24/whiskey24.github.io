@@ -1,6 +1,7 @@
 # Wiki Pages
 
 ## Table of Contents
+* [TrueNAS configuration](.truenas-config)
 * [Dataset configuration](./dataset-config)
-* [./samba](./samba)
+* [Samba configuration](./samba)
 * [Mermaid test](./mermaid)
