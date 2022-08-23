@@ -6,6 +6,7 @@
 1. Create a folder `_vpn-config` in the `apps` folder (make sure its owned by the `apps` group)
 1. Create a wireguard configuration file in your vpn provider's portal. 
 1. Strip out any IPv6 related entries, e.g. starting with `00` or `::`, it should look like:
+
 ```
 [Interface]
 PrivateKey = blahblahblah
@@ -17,6 +18,7 @@ PublicKey = blahblahblah
 AllowedIPs = 0.0.0.0/0
 Endpoint = 92.60.40.224:51820
 ```
+
 6. Store the vpn config file in the `_vpn-config` folder
 1. Leave all the default settings, except Add one _Configure Additional App Storage_ with _Host Path_ set to the `torrents` directory (e.g. `/mnt/Spinners/downloads/torrents`) and the _Mount Path_ set to `/downloads`
 1. Under _Security and Permissions_, set the _runAsUser_ to `2002` (leave _runAsGroup_ and _fsGroup_ set to `568`)
