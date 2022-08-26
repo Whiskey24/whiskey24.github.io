@@ -9,3 +9,6 @@
 
 ### Apps Configuration
 * [QBittorrent](./qbittorrent)
+
+### Useful stuff
+* [Kubernetes](./kubernetes)
