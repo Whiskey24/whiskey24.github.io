@@ -9,6 +9,7 @@
 
 ### Apps Configuration
 * [QBittorrent](./qbittorrent)
+* [Ark Survival Evolved - Server](./arkse)
 
 ### Useful stuff
 * [Kubernetes](./kubernetes)
