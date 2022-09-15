@@ -10,6 +10,7 @@
 ### Apps Configuration
 * [QBittorrent](./qbittorrent)
 * [Ark Survival Evolved - Server](./arkse)
+* [Passenger - Full](./passenger)
 
 ### Useful stuff
 * [Kubernetes](./kubernetes)
