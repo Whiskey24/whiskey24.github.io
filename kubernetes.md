@@ -14,3 +14,8 @@ _Make sure the same port number is not used by multiple pods!_
 ### Lots of details on the pods and containers
 `k3s kubectl get pods,svc,daemonsets,deployments,statefulset,sc,pvc,ns,job --all-namespaces -o wide`
 
+### See state of deployment of pods for given namespaces
+`k3s kubectl get pods -n ix-ark2 -o wide`
+Also useful with `watch` to see changes. 
+When all pods are _READY_, the status in the GUI will go to _ACTIVE_ for the app.
+![Kubernetes pods status](./images/ark_k3s_pods_status.png "Kubernetes pods status for namespace")
