@@ -3,6 +3,7 @@
 ## Installation & Configuration
 1. Install the _arksurvivalevolved_ chart from the TrueCharts Catalog
 1. Make sure put this as _GAME_PARAMS_: `?RCONPort=27020?RCONEnabled=True`. This may be added by default when the chart leaves incubation status.
+1. If you're hosting multiple servers, you have to change the game ports, query port and RCON port. Change the _GAME_PARAMS_ to: `?RCONPort=27021?RCONEnabled=True?QueryPort=27016?Port=7779?bRawSockets` and adjust to what's needed. Then specify the same ports in the settings, but also set the _Target Port_ in the *advanced settings* for each port. The RawSockets should improve performance.
 1. Add `-crossplay` to the _GAME_PARAMS_EXTRA_ so you get: `-server -log -crossplay`
 1. Leave _Networking and Services_ on the default settings
 1. Leave _Storage and Persistence_ on the default settings, i.e. with PVC
