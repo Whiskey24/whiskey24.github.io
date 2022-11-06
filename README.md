@@ -14,3 +14,4 @@
 
 ### Useful stuff
 * [Kubernetes](./kubernetes)
+* [VPN setup with UniFi Secure Gateway](./vpn-setup)
