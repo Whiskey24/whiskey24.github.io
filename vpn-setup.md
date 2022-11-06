@@ -22,7 +22,7 @@ This describes how to setup a VPN connection to your LAN using the RADIUS server
 1. Enter a name for the this VPN and enable it
 1. For _VPN Type_, select `L2TP Server`
 1. Enter a _Pre-Shared Key_ (just use the earlier password again)
-1. For the _Gateway IP/Subnet_ enter a range that does not clash with your local network *or with a Kubernetes network on a server you want to access!*. So not `172.16.0.0/16` which is the range offered by default (if you use that, access to your TrueNAS Scale server will not work!). See details in [this forum thread](https://www.truenas.com/community/threads/unable-to-access-truenas-over-vpn.103341/post-711275).
+1. For the _Gateway IP/Subnet_ enter a range that does not clash with your local network **or with a Kubernetes network on a server you want to access!** So not `172.16.0.0/16` which is the range offered by default (if you use that, access to your TrueNAS Scale server will not work!). See details in [this forum thread](https://www.truenas.com/community/threads/unable-to-access-truenas-over-vpn.103341/post-711275).
 1. Leave the DHCP and Radius Settings on their default (all disabled, including MS-CHAP v2)
 
 ## 4. Reboot USG

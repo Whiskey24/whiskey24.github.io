@@ -7,7 +7,7 @@
 1. Add `-crossplay` to the _GAME_PARAMS_EXTRA_ so you get: `-server -log -crossplay`
 1. Leave _Networking and Services_ on the default settings
 1. Leave _Storage and Persistence_ on the default settings, i.e. with PVC
-1. For _Configure Additional App Storage_ add backup to the backup folder on storage, e.g: _host path (simple)_ = `/mnt/Spinners/storage/server-backups/ark-se`", _Mount Path_ = `/backup`
+1. For _Configure Additional App Storage_ add the Saved folder (where Ark keeps all config and save files) as a mounted folder: _host path (simple)_ = `/mnt/Spinners/apps/ark-server/arkserver-01`", _Mount Path_ = `/serverdata/serverfiles/ShooterGame/Saved`
 1. With _Addons_, enable "CodeServer" if you want to edit configuration files directly in the browser
 
 ## Port forwarding
