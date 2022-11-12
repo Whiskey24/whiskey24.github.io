@@ -36,4 +36,11 @@ Two options:
 - mount the PVC of the Ark pod with the TrueTool (will automatically stop the pod) and edit via SSH
 
 ## Backup
-todo
+Ark regularly creates backups. These are in the Saved folder that we mounted as specified above. If you want to keep backups separately, just copy them over from the saved folder.
+
+## Troubleshooting / Checking status
+You can check if the server and accepting connections by checking the ports that listen for connections:
+1. Install *iproute2* to use the *ss* utility: `apt update && apt install -y iproute2`
+1. Check for open ports: `ss -tuplwn`
+   - This should list 4 open ports, as specified above
+   
