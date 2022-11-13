@@ -8,6 +8,9 @@
 1. Leave _Networking and Services_ on the default settings
 1. Leave _Storage and Persistence_ on the default settings, i.e. with PVC
 1. For _Configure Additional App Storage_ add the Saved folder (where Ark keeps all config and save files) as a mounted folder: _host path (simple)_ = `/mnt/Spinners/apps/ark-server/arkserver-01`", _Mount Path_ = `/serverdata/serverfiles/ShooterGame/Saved`
+1. Under **Resources and Devices***, tick `Set Custom Resource Limits/Requests (Advanced).` By default the memory limit is 8Gb and Ark will go over that after a few hours
+   - For `Advanced Limit Resource Consumption`, set RAM to 32 Gi (this should be plenty)
+   - For `Minimum Resource Required (request)`, set RAM to 8 Gi
 1. With _Addons_, enable "CodeServer" if you want to edit configuration files directly in the browser
 
 ## Port forwarding

@@ -19,3 +19,7 @@ _Make sure the same port number is not used by multiple pods!_
 Also useful with `watch` to see changes. 
 When all pods are _READY_, the status in the GUI will go to _ACTIVE_ for the app.
 ![Kubernetes pods status](./images/ark_k3s_pods_status.png "Kubernetes pods status for namespace")
+
+### Check resource limits (e.g. to see what the memory limit is)
+`k3s kubectl describe nodes`
+
