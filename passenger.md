@@ -28,6 +28,9 @@ The passenger image has an app user with UID 9999 and home directory /home/app.
 ```
 #!/bin/bash
 
+## Set timezone to CET / Amsterdam
+ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+
 ## Configure group for user app
 groupadd -g 568 apps
 usermod -a -G apps app
