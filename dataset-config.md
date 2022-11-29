@@ -4,7 +4,7 @@
 
 Pools in bold, data sets underneath:
 * __rapid-store__
-  * apps _storage for apps (containers and pods)_
+  * apps _simple storage for apps (pods)_
   * users _home directories for users_
   * downloads _storage for torrents, nzb etc._
 * __big-store__
