@@ -17,14 +17,14 @@
 
 ## Configuration table
 
-| Servername          | main service | udp2 service | udpsteam service | rcontcp service | cluster  |
-|---------------------|:------------:|:------------:|:----------------:|:---------------:|----------|
-| ark01-theisland     |   7777 UDP   |   7778 UDP   |     27015 UDP    |    27020 TCP    | cluster1 |
-| ark02-theisland     |   7779 UDP   |   7780 UDP   |     27016 UDP    |    27021 TCP    | cluster1 |
-| ark03-fjordur       |   7781 UDP   |   7782 UDP   |     27017 UDP    |    27022 TCP    | cluster1 |
-| ark04-scorchedearth |   7783 UDP   |   7784 UDP   |     27018 UDP    |    27023 TCP    | cluster1 |
-| ark05-aberration    |   7785 UDP   |   7786 UDP   |     27019 UDP    |    27024 TCP    | cluster1 |
-| ark06-extinction    |   7787 UDP   |   7788 UDP   |     28016 UDP    |    27025 TCP    | cluster1 |
+| Servername          | main service | udp2 service | udpsteam service | rcontcp service | cluster  | game parameters
+|---------------------|:------------:|:------------:|:----------------:|:---------------:|----------|-----------------------------------------------------------------------|
+| ark01-theisland     |   7777 UDP   |   7778 UDP   |     27015 UDP    |    27020 TCP    | cluster1 | ?Port=7777?QueryPort=27015?RCONPort=27020?RCONEnabled=True?bRawSockets|
+| ark02-theisland     |   7779 UDP   |   7780 UDP   |     27016 UDP    |    27021 TCP    | cluster1 | ?Port=7779?QueryPort=27016?RCONPort=27021?RCONEnabled=True?bRawSockets|
+| ark03-fjordur       |   7781 UDP   |   7782 UDP   |     27017 UDP    |    27022 TCP    | cluster1 | ?Port=7781?QueryPort=27017?RCONPort=27022?RCONEnabled=True?bRawSockets|
+| ark04-scorchedearth |   7783 UDP   |   7784 UDP   |     27018 UDP    |    27023 TCP    | cluster1 | ?Port=7783?QueryPort=27018?RCONPort=27023?RCONEnabled=True?bRawSockets|
+| ark05-aberration    |   7785 UDP   |   7786 UDP   |     27019 UDP    |    27024 TCP    | cluster1 | ?Port=7785?QueryPort=27019?RCONPort=27024?RCONEnabled=True?bRawSockets|
+| ark06-extinction    |   7787 UDP   |   7788 UDP   |     28016 UDP    |    27025 TCP    | cluster1 | ?Port=7787?QueryPort=28016?RCONPort=27025?RCONEnabled=True?bRawSockets|
 
 
 ## Port forwarding
