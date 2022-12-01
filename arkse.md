@@ -1,17 +1,31 @@
 # Ark Survival Evolved - Server
 
-## Installation & Configuration
+## Installation & Configuration (see table below for per server settings)
 1. Install the _arksurvivalevolved_ chart from the TrueCharts Catalog
 1. Make sure put this as _GAME_PARAMS_: `?RCONPort=27020?RCONEnabled=True`. This may be added by default when the chart leaves incubation status.
 1. If you're hosting multiple servers, you have to change the game ports, query port and RCON port. Change the _GAME_PARAMS_ to: `?RCONPort=27021?RCONEnabled=True?QueryPort=27016?Port=7779?bRawSockets` and adjust to what's needed. Then specify the same ports in the settings, but also set the _Target Port_ in the *advanced settings* for each port. The bRawSockets should improve performance.
-1. Add `-crossplay` to the _GAME_PARAMS_EXTRA_ so you get: `-server -log -crossplay`
+1. Add `-crossplay` to the _GAME_PARAMS_EXTRA_ and specify the cluster, so you get: `-server -log -crossplay -NoTransferFromFiltering -ClusterDirOverride=/clusterdata -clusterid=cluster1`
 1. Leave _Networking and Services_ on the default settings
 1. Leave _Storage and Persistence_ on the default settings, i.e. with PVC
-1. For _Configure Additional App Storage_ add the Saved folder (where Ark keeps all config and save files) as a mounted folder: _host path (simple)_ = `/mnt/Spinners/apps/ark-server/arkserver-01`", _Mount Path_ = `/serverdata/serverfiles/ShooterGame/Saved`
+1. For _Configure Additional App Storage_ add 
+   1. the Saved folder (where Ark keeps all config and save files) as a mounted folder: _host path (simple)_ = `/mnt/rapid-store/apps/ark-server/ark01-theisland`", _Mount Path_ = `/serverdata/serverfiles/ShooterGame/Saved`
+   1. The Clusterdata folder (where Ark stores data transferred between servers): _host path (simple)_ = `/mnt/rapid-store/apps/ark-server/clusterdata`", _Mount Path_ = `/clusterdata`
 1. Under **Resources and Devices***, tick `Set Custom Resource Limits/Requests (Advanced).` By default the memory limit is 8Gb and Ark will go over that after a few hours
    - For `Advanced Limit Resource Consumption`, set RAM to 32 Gi (this should be plenty)
    - For `Minimum Resource Required (request)`, set RAM to 8 Gi
 1. With _Addons_, enable "CodeServer" if you want to edit configuration files directly in the browser
+
+## Configuration table
+
+| Servername          | main service | udp2 service | udpsteam service | rcontcp service | cluster  |
+|---------------------|:------------:|:------------:|:----------------:|:---------------:|----------|
+| ark01-theisland     |   7777 UDP   |   7778 UDP   |     27015 UDP    |    27020 TCP    | cluster1 |
+| ark02-theisland     |   7779 UDP   |   7780 UDP   |     27016 UDP    |    27021 TCP    | cluster1 |
+| ark03-fjordur       |   7781 UDP   |   7782 UDP   |     27017 UDP    |    27022 TCP    | cluster1 |
+| ark04-scorchedearth |   7783 UDP   |   7784 UDP   |     27018 UDP    |    27023 TCP    | cluster1 |
+| ark05-aberration    |   7785 UDP   |   7786 UDP   |     27019 UDP    |    27024 TCP    | cluster1 |
+| ark06-extinction    |   7787 UDP   |   7788 UDP   |     28016 UDP    |    27025 TCP    | cluster1 |
+
 
 ## Port forwarding
 See also this [wiki page on dedicated server setup](https://ark.fandom.com/wiki/Dedicated_server_setup)
@@ -22,7 +36,7 @@ See also this [wiki page on dedicated server setup](https://ark.fandom.com/wiki/
    1. Query port: by default `27015`, each next server is *+1*, e.g. `27016`. Used by Steam and also the port to specify when adding the server in steam
    1. RCON port: by default `27020`, each next server is *+1*, e.g. `27021`. Used for remote administration. Optional, not needed for gameplay.
    
-When adding a server in steam, specify it with the query port, e.g. 192.168.1.17:27016
+When adding a server in steam, specify it with the query/udpsteam port, e.g. 192.168.1.17:27016
 
 ## Migration of data
 1. Collect all data in the old server in the Saved folder of the world(s) you need to migrate, e.g: `/home/arkserver/serverfiles/ShooterGame/Saved/TheIsland`
