@@ -23,3 +23,25 @@ When all pods are _READY_, the status in the GUI will go to _ACTIVE_ for the app
 ### Check resource limits (e.g. to see what the memory limit is)
 `k3s kubectl describe nodes`
 
+### Check ports in use for given namespace or all namespaces
+
+For namespace _ix-ark01-theisland_
+`k3s kubectl get services -n ix-ark01-theisland --output=json | jq .items[].spec.ports[]`
+
+For all namespaces
+`k3s kubectl get services --all-namespaces --output=json | jq .items[].spec.ports[]`
+
+### List all containerIDs of initContainer of all pods
+Helpful when cleaning up stopped containers, while avoiding removal of initContainers.
+`k3s kubectl get pods --all-namespaces -o jsonpath='{range .items[*].status.initContainerStatuses[*]}{.containerID}{"\n"}{end}' | cut -d/ -f3`
+
+### List container IDs by namespace and name
+
+`k3s kubectl get pods --all-namespaces --output=json | jq -r '.items | sort_by(.metadata.namespace,.metadata.name)[]|[.metadata.uid, .metadata.creationTimestamp, .metadata.namespace, .metadata.name] | @tsv'`
+
+To find orphaned pods, check pods in _/var/lib/kubelet/pods_
+
+![Kubernetes pods list](./images/ark_k3s_ids.png "Kubernetes pods list for namespace")
+
+
+`k3s kubectl get services -n ix-ark02-theisland --output=json | jq -r ' ["name", "nodePort", "port", "protocol", "targetPort"],  (.items[] | .spec.ports[] | [.name, .nodePort, .port, .protocol, .targetPort]) | @tsv'`
