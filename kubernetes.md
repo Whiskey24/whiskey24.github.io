@@ -45,3 +45,10 @@ To find orphaned pods, check pods in _/var/lib/kubelet/pods_
 
 
 `k3s kubectl get services -n ix-ark02-theisland --output=json | jq -r ' ["name", "nodePort", "port", "protocol", "targetPort"],  (.items[] | .spec.ports[] | [.name, .nodePort, .port, .protocol, .targetPort]) | @tsv'`
+
+
+`k3s kubectl get services -n ix-calibre --output=json | jq -r ' ["name      ", "nodePort", "port", "targetPort", "protocol"], (.items[] | .spec.ports[] | [(.name | . + " " * (10 - length)), (.nodePort | tostring | . + "    "), .port, (.targetPort | tostring | . + "     "), .protocol]) | @tsv'`
+
+`k3s kubectl get services --all-namespaces --output=json | jq -r ' ["name      ", "nodePort", "port", "targetPort", "protocol"], (.items[] | .spec.ports[] | [(.name | . + " " * (10 - length)), (.nodePort | tostring | . + "    "), .port, (.targetPort | tostring | . + " " * (10 - length)), .protocol]) | @tsv' `
+
+
