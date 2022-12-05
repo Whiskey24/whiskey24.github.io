@@ -15,16 +15,37 @@
    - For `Minimum Resource Required (request)`, set RAM to 8 Gi
 1. With _Addons_, enable "CodeServer" if you want to edit configuration files directly in the browser
 
-## Configuration table
+## Configuration details
 
-| Servername          | main service | udp2 service | udpsteam service | rcontcp service | cluster  | game parameters
-|---------------------|:------------:|:------------:|:----------------:|:---------------:|----------|-----------------------------------------------------------------------|
-| ark01-theisland     |   7777 UDP   |   7778 UDP   |     27015 UDP    |    27020 TCP    | cluster1 | ?Port=7777?QueryPort=27015?RCONPort=27020?RCONEnabled=True?bRawSockets|
-| ark02-theisland     |   7779 UDP   |   7780 UDP   |     27016 UDP    |    27021 TCP    | cluster1 | ?Port=7779?QueryPort=27016?RCONPort=27021?RCONEnabled=True?bRawSockets|
-| ark03-fjordur       |   7781 UDP   |   7782 UDP   |     27017 UDP    |    27022 TCP    | cluster1 | ?Port=7781?QueryPort=27017?RCONPort=27022?RCONEnabled=True?bRawSockets|
-| ark04-scorchedearth |   7783 UDP   |   7784 UDP   |     27018 UDP    |    27023 TCP    | cluster1 | ?Port=7783?QueryPort=27018?RCONPort=27023?RCONEnabled=True?bRawSockets|
-| ark05-aberration    |   7785 UDP   |   7786 UDP   |     27019 UDP    |    27024 TCP    | cluster1 | ?Port=7785?QueryPort=27019?RCONPort=27024?RCONEnabled=True?bRawSockets|
-| ark06-extinction    |   7787 UDP   |   7788 UDP   |     28016 UDP    |    27025 TCP    | cluster1 | ?Port=7787?QueryPort=28016?RCONPort=27025?RCONEnabled=True?bRawSockets|
+| Section                 | Parameter                                   | Value                                                                                                 |
+|-------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| Application Name        | Application Name                            | _see table_                                                                                           |
+| App Configuration       | SRV_PWD                                     | _keep secret_                                                                                         |
+| App Configuration       | SRV_ADMIN_PWD                               | _keep secret_                                                                                         |
+| App Configuration       | MAP                                         | _see table_                                                                                           |
+| App Configuration       | SERVER_NAME                                 | _see table_                                                                                           |
+| App Configuration       | GAME_PARAMS                                 | ?Port=7777?QueryPort=27015?RCONPort=27020?RCONEnabled=True?bRawSockets                                |
+| App Configuration       | GAME_PARAMS_EXTRA                           | -server -log -crossplay -NoTransferFromFiltering -ClusterDirOverride=/clusterdata -clusterid=cluster1 |
+| Networking and Services | Main Service                                | LoadBalancer IP: _see table_ Port: 7777                                                               |
+| Networking and Services | udp2 service                                | LoadBalancer IP: _see table_ Port: 7778                                                               |
+| Networking and Services | udpsteam service                            | LoadBalancer IP: _see table_ Port: 27015                                                              |
+| Networking and Services | rcontcp service                             | LoadBalancer IP: _see table_ Port: 27020                                                              |
+| Storage and Persistence | Integrated Persistent Storage - steamcmd    | Size quotum of Storage: 25Gi                                                                          |
+| Storage and Persistence | Integrated Persistent Storage - serverfiles | Size quotum of Storage: 25Gi                                                                          |
+| Storage and Persistence | Configure Additional App Storage            | Host Path: _see table_ Mount Path: /serverdata/serverfiles/ShooterGame/Saved                          |
+| Storage and Persistence | Configure Additional App Storage            | Host Path: /mnt/rapid-store/apps/ark-servers/clusterdata Mount Path: /clusterdata                     |
+| Resources and Devices   | Resource Limits - RAM                       | 32Gi                                                                                                  |
+
+
+
+| App name            | Server name                 | Map             | IP address    | Additional app storage - host path                   | Additional app storage - mount path       |
+|---------------------|-----------------------------|-----------------|---------------|------------------------------------------------------|-------------------------------------------|
+| ark01-theisland     | lvvdg24-ark01-theisland     | TheIsland       | 192.168.30.51 | /mnt/rapid-store/apps/ark-server/ark01-theisland     | /serverdata/serverfiles/Shootergame/Saved |
+| ark02-theisland     | lvvdg24-ark02-theisland     | TheIsland       | 192.168.30.52 | /mnt/rapid-store/apps/ark-server/ark02-theisland     | /serverdata/serverfiles/Shootergame/Saved |
+| ark03-fjordur       | lvvdg24-ark03-fjordur       | Fjordur         | 192.168.30.53 | /mnt/rapid-store/apps/ark-server/ark03-fjordur       | /serverdata/serverfiles/Shootergame/Saved |
+| ark04-scorchedearth | lvvdg24-ark04-scorchedearth | ScorchedEarth_P | 192.168.30.54 | /mnt/rapid-store/apps/ark-server/ark04-scorchedearth | /serverdata/serverfiles/Shootergame/Saved |
+| ark05-aberration    | lvvdg24-ark05-aberration    | Aberration_P    | 192.168.30.55 | /mnt/rapid-store/apps/ark-server/ark05-aberration    | /serverdata/serverfiles/Shootergame/Saved |
+| ark06-extinction    | lvvdg24-ark06-extinction    | Extinction      | 192.168.30.56 | /mnt/rapid-store/apps/ark-server/ark06-extinction    | /serverdata/serverfiles/Shootergame/Saved |
 
 
 ## Port forwarding
@@ -37,6 +58,23 @@ See also this [wiki page on dedicated server setup](https://ark.fandom.com/wiki/
    1. RCON port: by default `27020`, each next server is *+1*, e.g. `27021`. Used for remote administration. Optional, not needed for gameplay.
    
 When adding a server in steam, specify it with the query/udpsteam port, e.g. 192.168.1.17:27016
+
+## Map names
+
+|       Map       | Name for dedicated servers  |
+|:---------------:|:---------------------------:|
+| The Island      | TheIsland                   |
+| The Center      | TheCenter                   |
+| Scorched Earth  | ScorchedEarth_P             |
+| Ragnarok        | Ragnarok                    |
+| Aberration      | Aberration_P                |
+| Extinction      | Extinction                  |
+| Valguero        | Valguero_P                  |
+| Genesis: Part 1 | Genesis                     |
+| Crystal Isles   | CrystalIsles                |
+| Genesis: Part 2 | Gen2                        |
+| Lost Island     | LostIsland                  |
+| Fjordur         | Fjordur                     |
 
 ## Migration of data
 1. Collect all data in the old server in the Saved folder of the world(s) you need to migrate, e.g: `/home/arkserver/serverfiles/ShooterGame/Saved/TheIsland`
