@@ -1,19 +1,12 @@
 # Ark Survival Evolved - Server
 
 ## Installation & Configuration (see table below for per server settings)
-1. Install the _arksurvivalevolved_ chart from the TrueCharts Catalog
-1. Make sure put this as _GAME_PARAMS_: `?RCONPort=27020?RCONEnabled=True`. This may be added by default when the chart leaves incubation status.
-1. If you're hosting multiple servers, you have to change the game ports, query port and RCON port. Change the _GAME_PARAMS_ to: `?RCONPort=27021?RCONEnabled=True?QueryPort=27016?Port=7779?bRawSockets` and adjust to what's needed. Then specify the same ports in the settings, but also set the _Target Port_ in the *advanced settings* for each port. The bRawSockets should improve performance.
-1. Add `-crossplay` to the _GAME_PARAMS_EXTRA_ and specify the cluster, so you get: `-server -log -crossplay -NoTransferFromFiltering -ClusterDirOverride=/clusterdata -clusterid=cluster1`
-1. Leave _Networking and Services_ on the default settings
-1. Leave _Storage and Persistence_ on the default settings, i.e. with PVC
-1. For _Configure Additional App Storage_ add 
-   1. the Saved folder (where Ark keeps all config and save files) as a mounted folder: _host path (simple)_ = `/mnt/rapid-store/apps/ark-server/ark01-theisland`", _Mount Path_ = `/serverdata/serverfiles/ShooterGame/Saved`
-   1. The Clusterdata folder (where Ark stores data transferred between servers): _host path (simple)_ = `/mnt/rapid-store/apps/ark-server/clusterdata`", _Mount Path_ = `/clusterdata`
-1. Under **Resources and Devices***, tick `Set Custom Resource Limits/Requests (Advanced).` By default the memory limit is 8Gb and Ark will go over that after a few hours
-   - For `Advanced Limit Resource Consumption`, set RAM to 32 Gi (this should be plenty)
-   - For `Minimum Resource Required (request)`, set RAM to 8 Gi
-1. With _Addons_, enable "CodeServer" if you want to edit configuration files directly in the browser
+
+This is now updated to use a different IP per server, so each server can keep its default ports. You have to install MetalLB first for this.
+
+1. First install MetalLB, its in the _enterprise_ track of True Charts. Follow the instructions here: [MetalLB Basic Setup](https://truecharts.org/docs/charts/enterprise/metallb/setup-guide) 
+1. Install the _arksurvivalevolved_ chart from the TrueCharts Catalog for each game server you want to run (probably possible to share server files, but not looked into that yet).
+1. Configure following the configuration in the tables below. You have to add two storage locations. If a setting is not mentioned, leave it to its default. Do *not* forget to up the RAM resource limit.
 
 ## Configuration details
 
@@ -56,7 +49,20 @@ See also this [wiki page on dedicated server setup](https://ark.fandom.com/wiki/
    1. Rawsockets port: by default `7778`, each next server is *+2*, e.g. `7780`
    1. Query port: by default `27015`, each next server is *+1*, e.g. `27016`. Used by Steam and also the port to specify when adding the server in steam
    1. RCON port: by default `27020`, each next server is *+1*, e.g. `27021`. Used for remote administration. Optional, not needed for gameplay.
-   
+1. *The port forwarding needs to convert the external port number in the table below to the default port number and ip of the server.*
+
+
+| App name             | Server name                  | Map              | IP address     | Game port 1 | Game port 2 | Steam query | RCON      |
+|----------------------|------------------------------|------------------|----------------|-------------|-------------|-------------|-----------|
+| ark01-theisland      | lvvdg24-ark01-theisland      | TheIsland        | 192.168.30.51  | 7777 UPD    | 7778 UDP    | 27015 UDP   | 27020 TCP |
+| ark02-theisland      | lvvdg24-ark02-theisland      | TheIsland        | 192.168.30.52  | 7779 UPD    | 7780 UDP    | 27016 UDP   | 27021 TCP |
+| ark03-fjordur        | lvvdg24-ark03-fjordur        | Fjordur          | 192.168.30.53  | 7781 UPD    | 7782 UDP    | 27017 UDP   | 27022 TCP |
+| ark04-scorchedearth  | lvvdg24-ark04-scorchedearth  | ScorchedEarth_P  | 192.168.30.54  | 7783 UPD    | 7784 UDP    | 27018 UDP   | 27023 TCP |
+| ark05-aberration     | lvvdg24-ark05-aberration     | Aberration_P     | 192.168.30.55  | 7785 UPD    | 7786 UDP    | 27019 UDP   | 27024 TCP |
+| ark06-extinction     | lvvdg24-ark06-extinction     | Extinction       | 192.168.30.56  | 7787 UPD    | 7788 UDP    | 28016 UDP   | 27025 TCP |
+
+Easier to create a single rule in the ISP router for ports 7777-7790 UDP, 27015-27019 UPD and 28016-28017 UDP. RCON ports do not need outside exposure.
+
 When adding a server in steam, specify it with the query/udpsteam port, e.g. 192.168.1.17:27016
 
 ## Map names
@@ -82,11 +88,11 @@ When adding a server in steam, specify it with the query/udpsteam port, e.g. 192
    1. All the `.arktribe` files
    1. All the `.arkprofile` files
    1. The complete `ServerPaintingsCache` folder
-1. Mount the PVC of the Ark pod using the TrueCharts [TrueTool](https://github.com/truecharts/truetool) (must run as root with environment, i.e. `su -`!)
-1. Copy over all the files into the same location in the new server / Ark pod
+1. Stop the pod/app and copy over the files in its Saved folder 
 
 ## Editing config files
-Two options:
+Three options:
+- stop the pod and edit in Windows via Samba or directly from the commandline (the Config folder is inside the Saved folder, which is outside the PVC)
 - edit the files via the code editor via the browser and stop/start the Ark container after editing (or figure out how to restart the Ark server in the container)
 - mount the PVC of the Ark pod with the TrueTool (will automatically stop the pod) and edit via SSH
 
