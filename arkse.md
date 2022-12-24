@@ -7,6 +7,8 @@ This is now updated to use a different IP per server, so each server can keep it
 1. First install MetalLB, its in the _enterprise_ track of True Charts. Follow the instructions here: [MetalLB Basic Setup](https://truecharts.org/docs/charts/enterprise/metallb/setup-guide) 
 1. Install the _arksurvivalevolved_ chart from the TrueCharts Catalog for each game server you want to run (probably possible to share server files, but not looked into that yet).
 1. Configure following the configuration in the tables below. You have to add two storage locations. If a setting is not mentioned, leave it to its default. Do *not* forget to up the RAM resource limit.
+1. ?bRawSockets parameter is obsolete, don't use it. See [these release notes](https://ark.fandom.com/wiki/311.78)
+1. Do NOT use the extra Game Parameter *automanagedmods*, I tried and it crashed the server/pod on startup.
 
 ## Configuration details
 
@@ -17,13 +19,13 @@ This is now updated to use a different IP per server, so each server can keep it
 | App Configuration       | SRV_ADMIN_PWD                               | _keep secret_                                                                                         |
 | App Configuration       | MAP                                         | _see table_                                                                                           |
 | App Configuration       | SERVER_NAME                                 | _see table_                                                                                           |
-| App Configuration       | GAME_PARAMS                                 | ?Port=7777?QueryPort=27015?RCONPort=27020?RCONEnabled=True?bRawSockets                                |
+| App Configuration       | GAME_PARAMS                                 | from chart config, will result in ?Port=7777?QueryPort=27015?RCONPort=27020?RCONEnabled=True          |
 | App Configuration       | GAME_PARAMS_EXTRA                           | -server -log -crossplay -NoTransferFromFiltering -ClusterDirOverride=/clusterdata -clusterid=cluster1 |
 | Networking and Services | Main Service                                | LoadBalancer IP: _see table_ Port: 7777                                                               |
 | Networking and Services | udp2 service                                | LoadBalancer IP: _see table_ Port: 7778                                                               |
 | Networking and Services | udpsteam service                            | LoadBalancer IP: _see table_ Port: 27015                                                              |
 | Networking and Services | rcontcp service                             | LoadBalancer IP: _see table_ Port: 27020                                                              |
-| Storage and Persistence | Integrated Persistent Storage - steamcmd    | Size quotum of Storage: 25Gi                                                                          |
+| Storage and Persistence | Integrated Persistent Storage - steamcmd    | Size quotum of Storage: 1Gi                                                                          |
 | Storage and Persistence | Integrated Persistent Storage - serverfiles | Size quotum of Storage: 25Gi                                                                          |
 | Storage and Persistence | Configure Additional App Storage            | Host Path: _see table_ Mount Path: /serverdata/serverfiles/ShooterGame/Saved                          |
 | Storage and Persistence | Configure Additional App Storage            | Host Path: /mnt/rapid-store/apps/ark-servers/clusterdata Mount Path: /clusterdata                     |
@@ -33,12 +35,12 @@ This is now updated to use a different IP per server, so each server can keep it
 
 | App name            | Server name                 | Map             | IP address    | Additional app storage - host path                   | Additional app storage - mount path       |
 |---------------------|-----------------------------|-----------------|---------------|------------------------------------------------------|-------------------------------------------|
-| ark01-theisland     | lvvdg24-ark01-theisland     | TheIsland       | 192.168.30.51 | /mnt/rapid-store/apps/ark-server/ark01-theisland     | /serverdata/serverfiles/Shootergame/Saved |
-| ark02-theisland     | lvvdg24-ark02-theisland     | TheIsland       | 192.168.30.52 | /mnt/rapid-store/apps/ark-server/ark02-theisland     | /serverdata/serverfiles/Shootergame/Saved |
-| ark03-fjordur       | lvvdg24-ark03-fjordur       | Fjordur         | 192.168.30.53 | /mnt/rapid-store/apps/ark-server/ark03-fjordur       | /serverdata/serverfiles/Shootergame/Saved |
-| ark04-scorchedearth | lvvdg24-ark04-scorchedearth | ScorchedEarth_P | 192.168.30.54 | /mnt/rapid-store/apps/ark-server/ark04-scorchedearth | /serverdata/serverfiles/Shootergame/Saved |
-| ark05-aberration    | lvvdg24-ark05-aberration    | Aberration_P    | 192.168.30.55 | /mnt/rapid-store/apps/ark-server/ark05-aberration    | /serverdata/serverfiles/Shootergame/Saved |
-| ark06-extinction    | lvvdg24-ark06-extinction    | Extinction      | 192.168.30.56 | /mnt/rapid-store/apps/ark-server/ark06-extinction    | /serverdata/serverfiles/Shootergame/Saved |
+| ark01-theisland     | lvvdg24-ark01-theisland     | TheIsland       | 192.168.30.51 | /mnt/rapid-store/apps/ark-server/ark01-theisland     | /serverdata/serverfiles/ShooterGame/Saved |
+| ark02-theisland     | lvvdg24-ark02-theisland     | TheIsland       | 192.168.30.52 | /mnt/rapid-store/apps/ark-server/ark02-theisland     | /serverdata/serverfiles/ShooterGame/Saved |
+| ark03-fjordur       | lvvdg24-ark03-fjordur       | Fjordur         | 192.168.30.53 | /mnt/rapid-store/apps/ark-server/ark03-fjordur       | /serverdata/serverfiles/ShooterGame/Saved |
+| ark04-scorchedearth | lvvdg24-ark04-scorchedearth | ScorchedEarth_P | 192.168.30.54 | /mnt/rapid-store/apps/ark-server/ark04-scorchedearth | /serverdata/serverfiles/ShooterGame/Saved |
+| ark05-aberration    | lvvdg24-ark05-aberration    | Aberration_P    | 192.168.30.55 | /mnt/rapid-store/apps/ark-server/ark05-aberration    | /serverdata/serverfiles/ShooterGame/Saved |
+| ark06-extinction    | lvvdg24-ark06-extinction    | Extinction      | 192.168.30.56 | /mnt/rapid-store/apps/ark-server/ark06-extinction    | /serverdata/serverfiles/ShooterGame/Saved |
 
 
 ## Port forwarding
