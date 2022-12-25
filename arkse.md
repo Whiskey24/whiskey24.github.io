@@ -33,14 +33,14 @@ This is now updated to use a different IP per server, so each server can keep it
 
 
 
-| App name            | Server name                 | Map             | IP address    | Additional app storage - host path                   | Additional app storage - mount path       |
-|---------------------|-----------------------------|-----------------|---------------|------------------------------------------------------|-------------------------------------------|
-| ark01-theisland     | lvvdg24-ark01-theisland     | TheIsland       | 192.168.30.51 | /mnt/rapid-store/apps/ark-server/ark01-theisland     | /serverdata/serverfiles/ShooterGame/Saved |
-| ark02-theisland     | lvvdg24-ark02-theisland     | TheIsland       | 192.168.30.52 | /mnt/rapid-store/apps/ark-server/ark02-theisland     | /serverdata/serverfiles/ShooterGame/Saved |
-| ark03-fjordur       | lvvdg24-ark03-fjordur       | Fjordur         | 192.168.30.53 | /mnt/rapid-store/apps/ark-server/ark03-fjordur       | /serverdata/serverfiles/ShooterGame/Saved |
-| ark04-scorchedearth | lvvdg24-ark04-scorchedearth | ScorchedEarth_P | 192.168.30.54 | /mnt/rapid-store/apps/ark-server/ark04-scorchedearth | /serverdata/serverfiles/ShooterGame/Saved |
-| ark05-aberration    | lvvdg24-ark05-aberration    | Aberration_P    | 192.168.30.55 | /mnt/rapid-store/apps/ark-server/ark05-aberration    | /serverdata/serverfiles/ShooterGame/Saved |
-| ark06-extinction    | lvvdg24-ark06-extinction    | Extinction      | 192.168.30.56 | /mnt/rapid-store/apps/ark-server/ark06-extinction    | /serverdata/serverfiles/ShooterGame/Saved |
+| App name            | Server name                 | Map             | IP address    | Additional app storage - host path (Saved dir)             | Additional app storage - mount path (Saved)| Additional app storage - host path (Mods)                 | Additional app storage - mount path (Mods)|
+|---------------------|-----------------------------|-----------------|---------------|------------------------------------------------------------|--------------------------------------------|-----------------------------------------------------------|-------------------------------------------|
+| ark01-theisland     | lvvdg24-ark01-theisland     | TheIsland       | 192.168.30.51 | /mnt/rapid-store/apps/ark-server/ark01-theisland/Saved     | /serverdata/serverfiles/ShooterGame/Saved  | /mnt/rapid-store/apps/ark-server/ark01-theisland/Mods     | /serverdata/serverfiles/ShooterGame/Mods  |
+| ark02-theisland     | lvvdg24-ark02-theisland     | TheIsland       | 192.168.30.52 | /mnt/rapid-store/apps/ark-server/ark02-theisland/Saved     | /serverdata/serverfiles/ShooterGame/Saved  | /mnt/rapid-store/apps/ark-server/ark02-theisland/Mods     | /serverdata/serverfiles/ShooterGame/Mods  |
+| ark03-fjordur       | lvvdg24-ark03-fjordur       | Fjordur         | 192.168.30.53 | /mnt/rapid-store/apps/ark-server/ark03-fjordur/Saved       | /serverdata/serverfiles/ShooterGame/Saved  | /mnt/rapid-store/apps/ark-server/ark03-fjordur/Mods       | /serverdata/serverfiles/ShooterGame/Mods  |
+| ark04-scorchedearth | lvvdg24-ark04-scorchedearth | ScorchedEarth_P | 192.168.30.54 | /mnt/rapid-store/apps/ark-server/ark04-scorchedearth/Saved | /serverdata/serverfiles/ShooterGame/Saved  | /mnt/rapid-store/apps/ark-server/ark04-scorchedearth/Mods | /serverdata/serverfiles/ShooterGame/Mods  |
+| ark05-aberration    | lvvdg24-ark05-aberration    | Aberration_P    | 192.168.30.55 | /mnt/rapid-store/apps/ark-server/ark05-aberration/Saved    | /serverdata/serverfiles/ShooterGame/Saved  | /mnt/rapid-store/apps/ark-server/ark05-aberration/Mods    | /serverdata/serverfiles/ShooterGame/Mods  |
+| ark06-extinction    | lvvdg24-ark06-extinction    | Extinction      | 192.168.30.56 | /mnt/rapid-store/apps/ark-server/ark06-extinction/Saved    | /serverdata/serverfiles/ShooterGame/Saved  | /mnt/rapid-store/apps/ark-server/ark06-extinction/Mods    | /serverdata/serverfiles/ShooterGame/Mods  |
 
 
 ## Port forwarding
