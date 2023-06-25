@@ -1,5 +1,12 @@
 # Kubernetes
 
+## Configuration 
+
+### Mounting folders
+In order to mount folders that are also in use by other services, for example the media folder that is also shared using SMB, you have to disable this setting if you want to mount that folder inside the container. If you do not do this you will get a createcontainer error. Solution was found [here](https://www.truenas.com/community/threads/invalid-mount-path-following-service-s-uses-this-path-snapshot-task.104305/)
+In Applications, go to Settings > Advanced Settings, and uncheck Enable Host Path Safety Checks. Save, your containers will restart, and you won't have this conflict anymore.
+
+
 ## Useful commands
 
 ### See what ports are in use by which pod
