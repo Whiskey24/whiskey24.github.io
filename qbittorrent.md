@@ -1,5 +1,7 @@
 # QBittorrent
 
+NOTE: Use Gluetun now for VPN, see here: https://truecharts.org/manual/SCALE/guides/vpn-setup
+
 ## Installation & Configuration
 1. Create a new user `qtorrent` with _uid_ `2002`
 1. Create a folder `torrents` in the `downloads` folder (make sure its owned by the `apps` group)
