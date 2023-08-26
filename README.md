@@ -11,6 +11,7 @@
 * [QBittorrent](./qbittorrent)
 * [Ark Survival Evolved - Server](./arkse)
 * [Passenger - Full](./passenger)
+* [Home Assistant](./home-assistant)
 
 ### Useful stuff
 * [Kubernetes](./kubernetes)
