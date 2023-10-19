@@ -12,6 +12,7 @@
 * [Ark Survival Evolved - Server](./arkse)
 * [Passenger - Full](./passenger)
 * [Home Assistant](./home-assistant)
+* [The Forest - Server](./theforest)
 
 ### Useful stuff
 * [Kubernetes](./kubernetes)
