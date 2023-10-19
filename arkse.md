@@ -62,6 +62,11 @@ See also this [wiki page on dedicated server setup](https://ark.fandom.com/wiki/
 | ark04-scorchedearth  | lvvdg24-ark04-scorchedearth  | ScorchedEarth_P  | 192.168.30.54  | 7783 UPD    | 7784 UDP    | 27018 UDP   | 27023 TCP |
 | ark05-aberration     | lvvdg24-ark05-aberration     | Aberration_P     | 192.168.30.55  | 7785 UPD    | 7786 UDP    | 27019 UDP   | 27024 TCP |
 | ark06-extinction     | lvvdg24-ark06-extinction     | Extinction       | 192.168.30.56  | 7787 UPD    | 7788 UDP    | 28016 UDP   | 27025 TCP |
+| ark07-genesis        | lvvdg24-ark07-genesis        | Genesis          | 192.168.30.57  | 7789 UPD    | 7790 UDP    | 28017 UDP   | 27026 TCP |
+| xxx                  | xxx                          | xxx              | 192.168.30.58  | 7791 UPD    | 7792 UDP    | 28018 UDP   | 27027 TCP |
+| xxx                  | xxx                          | xxx              | 192.168.30.59  | 7793 UPD    | 7794 UDP    | 28019 UDP   | 27028 TCP |
+| xxx                  | xxx                          | xxx              | 192.168.30.60  | 7795 UPD    | 7796 UDP    | 28020 UDP   | 27029 TCP |
+
 
 Easier to create a single rule in the ISP router for ports 7777-7790 UDP, 27015-27019 UPD and 28016-28017 UDP. RCON ports do not need outside exposure.
 
