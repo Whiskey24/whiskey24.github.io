@@ -42,6 +42,15 @@ For an Android VPN connection, go to _Settings > Wifi and network > VPN_  and ad
 * Proxy: _none_
 * Username and Password: _as configured earlier_
 
+
+## 5b. Configure VPN client side
+* On Windows 11, make sure these protocols are enabled under Security (under "More VPN properties"):
+![W11 VPN configuration](./images/vpn_w11_settings.png "W11 VPN configuration")
+* You also need this regedit as described [here on superuser](https://superuser.com/questions/1298513/l2tp-ipsec-vpn-fails-to-connect-on-windows-10-works-fine-on-ios):
+
+`REG ADD HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 0x2 /f`
+
+
 ## 6. Port forwarding
 If the USG is behind a router or firewall, forward these ports:
 * TCP 1701
